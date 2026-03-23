@@ -1082,6 +1082,12 @@ main {
   overflow-wrap: anywhere;
 }
 
+.sponsor-capability-card--link:hover,
+.sponsor-capability-card--link:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 42px rgba(86, 41, 11, 0.12);
+}
+
 .foundation-card {
   display: grid;
   justify-items: center;
@@ -1112,11 +1118,33 @@ main {
   display: grid;
   gap: 1rem;
   align-content: start;
+  padding: clamp(1.35rem, 3vw, 2rem);
 }
 
 .sponsor-catalog-block {
   display: grid;
   gap: 0.65rem;
+}
+
+.sponsor-service-grid {
+  gap: 0.95rem;
+}
+
+.sponsor-service-card {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 0.85rem;
+  padding: 1.15rem 1rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(175, 122, 66, 0.1);
+}
+
+.sponsor-service-card .card-title {
+  margin: 0;
+  font-size: clamp(1rem, 1.2vw, 1.18rem);
+  line-height: 1.2;
 }
 
 .sponsor-catalog-list {
@@ -1143,6 +1171,28 @@ main {
   color: var(--ink-soft);
   font-size: 0.88rem;
   line-height: 1.35;
+}
+
+.resource-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.resource-group {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(175, 122, 66, 0.1);
+}
+
+.resource-group__title {
+  margin: 0;
+  font-family: "Fraunces", serif;
+  font-size: 1.15rem;
+  color: var(--ink);
 }
 
 .sponsor-startup-flow::before {
@@ -1522,14 +1572,25 @@ main {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.2rem;
+  align-items: start;
+}
+
+.team-card {
+  grid-template-rows: auto 1fr;
 }
 
 .team-card .card-media {
   aspect-ratio: 4 / 5;
+  min-height: 300px;
+  background: rgba(175, 122, 66, 0.08);
 }
 
 .team-card .card-media img {
-  object-position: center top;
+  object-position: center 18%;
+}
+
+.team-card .card-body {
+  align-content: start;
 }
 
 .social-tag {
@@ -1886,6 +1947,10 @@ main {
   opacity: 0.52;
   cursor: not-allowed;
   transform: none;
+}
+
+.registration-actions [hidden] {
+  display: none !important;
 }
 
 .review-grid {
