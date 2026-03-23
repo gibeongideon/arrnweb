@@ -1,6 +1,7 @@
 const NAV_ITEMS = [
   { label: "Home", href: "index.html", pages: ["home"] },
   { label: "About Us", href: "mission-and-vision.html", pages: ["mission-and-vision"] },
+  { label: "Patients", href: "patients.html", pages: ["patients"] },
   { label: "Sponsors", href: "sponsors.html", pages: ["sponsors"] },
   { label: "Studies", href: "studies.html", pages: ["studies", "nephrology", "autoimmune", "cardiology"] },
   { label: "Our Team", href: "our-team.html", pages: ["our-team"] },
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMenu();
   initRevealObserver();
   populateGeneratedFields();
+  initRegistrationForm();
   initStaticForms();
 });
 
@@ -45,7 +47,7 @@ function renderChrome() {
     headerMount.innerHTML = createHeader(page);
   }
 
-  if (main && page !== "registration" && page !== "sponsors" && page !== "studies") {
+  if (main && page !== "home" && page !== "registration" && page !== "sponsors" && page !== "studies") {
     main.insertAdjacentHTML("beforeend", createRegistrationBand());
   }
 
@@ -61,7 +63,7 @@ function createHeader(page) {
         <div class="nav-shell">
           <div class="nav-top">
             <a class="brand" href="index.html" aria-label="ARRI home">
-              <span class="brand__mark">ARRI</span>
+              <img class="brand__logo" src="ARRI.png" alt="ARRI">
               <span class="brand__copy">Africa Renal Research Network</span>
             </a>
             <nav class="desktop-nav" aria-label="Main">
@@ -78,7 +80,7 @@ function createHeader(page) {
       <aside class="mobile-panel" id="mobile-nav" aria-label="Mobile navigation">
         <div class="mobile-panel__header">
           <a class="brand" href="index.html" aria-label="ARRI home">
-            <span class="brand__mark">ARRI</span>
+            <img class="brand__logo" src="ARRI.png" alt="ARRI">
             <span class="brand__copy">Africa Renal Research Network</span>
           </a>
           <button class="mobile-close" type="button" aria-label="Close navigation">
@@ -101,13 +103,14 @@ function createFooter() {
         <div class="footer-shell">
           <div class="footer-grid">
             <div class="footer-brand">
-              <p class="footer-brand__name">ARRI</p>
+              <img class="footer-brand__logo" src="ARRI.png" alt="ARRI">
               <p class="footer-copy">Africa Renal Research Network — bridging global pharmaceutical innovation and African clinical expertise.</p>
             </div>
             <div>
               <h2 class="footer-title">Quick Links</h2>
               <nav class="footer-links" aria-label="Quick Links">
                 <a href="mission-and-vision.html">About Us</a>
+                <a href="patients.html">Patients</a>
                 <a href="studies.html">Studies</a>
                 <a href="sponsors.html">Sponsors</a>
                 <a href="our-team.html">Our Team</a>
@@ -117,9 +120,9 @@ function createFooter() {
             <div>
               <h2 class="footer-title">Contact</h2>
               <div class="footer-contact">
-                <a href="mailto:info@arri-network.org">info@arri-network.org</a>
-                <a href="tel:+254700000000">+254 700 000 000</a>
-                <p>Nairobi, Kenya</p>
+                <p>Suite 4.3, 4th floor • Anderson Building, Nairobi Hospital • Kenya</p>
+                <a href="tel:+254718930065">+254 718 930 065</a>
+                <a href="mailto:info@arri.ke">info@arri.ke</a>
               </div>
             </div>
           </div>
@@ -141,7 +144,7 @@ function createRegistrationBand() {
             <div class="spaced">
               <p class="cta-band__eyebrow">Patient Registration</p>
               <h2 class="title-md">Interested in future kidney-related trials?</h2>
-              <p>Register once and ARRN can contact you if a relevant research or patient outreach opportunity becomes available.</p>
+              <p>Register once and ARRI can contact you if a relevant research or patient outreach opportunity becomes available.</p>
             </div>
             <a class="button button--light" href="registration.html">Register for our trials</a>
           </div>
@@ -397,6 +400,157 @@ function initStaticForms() {
       window.setTimeout(() => form.classList.remove("is-submitted"), 2200);
     });
   });
+}
+
+function initRegistrationForm() {
+  const form = document.querySelector("[data-multistep-form]");
+
+  if (!form) {
+    return;
+  }
+
+  const steps = Array.from(form.querySelectorAll("[data-form-step]"));
+  const indicators = Array.from(document.querySelectorAll("[data-step-indicator]"));
+  const previousButton = form.querySelector("[data-step-prev]");
+  const nextButton = form.querySelector("[data-step-next]");
+  const submitButton = form.querySelector("[data-step-submit]");
+  const currentStepLabel = form.querySelector("[data-step-current]");
+  const totalStepLabel = form.querySelector("[data-step-total]");
+  const stepHeading = form.querySelector("[data-step-heading]");
+  const progressFill = form.querySelector("[data-step-progress]");
+  const reviewTargets = Array.from(form.querySelectorAll("[data-review]"));
+  let currentStep = 0;
+
+  if (!steps.length) {
+    return;
+  }
+
+  if (totalStepLabel) {
+    totalStepLabel.textContent = String(steps.length);
+  }
+
+  const getFieldsForStep = (step) =>
+    Array.from(step.querySelectorAll("input, select, textarea")).filter((field) => !field.disabled);
+
+  const validateStep = (step) => {
+    const invalidField = getFieldsForStep(step).find((field) => !field.checkValidity());
+
+    if (!invalidField) {
+      return true;
+    }
+
+    invalidField.reportValidity();
+    invalidField.focus();
+    return false;
+  };
+
+  const getValuesByName = (name) => {
+    return Array.from(form.elements)
+      .filter((field) => field.name === name)
+      .flatMap((field) => {
+        if (field instanceof RadioNodeList) {
+          return [];
+        }
+
+        if (field.type === "checkbox" || field.type === "radio") {
+          return field.checked ? [String(field.value).trim()] : [];
+        }
+
+        const text = String(field.value || "").trim();
+        return text ? [text] : [];
+      });
+  };
+
+  const refreshReview = () => {
+    reviewTargets.forEach((target) => {
+      const name = target.dataset.review;
+      const values = getValuesByName(name);
+      target.textContent = values.length ? values.join(", ") : "Not provided";
+    });
+  };
+
+  const renderStep = () => {
+    steps.forEach((step, index) => {
+      const active = index === currentStep;
+      step.classList.toggle("is-active", active);
+      step.hidden = !active;
+    });
+
+    indicators.forEach((indicator, index) => {
+      indicator.classList.toggle("is-active", index === currentStep);
+      indicator.classList.toggle("is-complete", index < currentStep);
+    });
+
+    if (currentStepLabel) {
+      currentStepLabel.textContent = String(currentStep + 1);
+    }
+
+    if (stepHeading) {
+      stepHeading.textContent = steps[currentStep].dataset.stepTitle || `Step ${currentStep + 1}`;
+    }
+
+    if (progressFill) {
+      progressFill.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+    }
+
+    if (previousButton) {
+      previousButton.disabled = currentStep === 0;
+    }
+
+    if (nextButton) {
+      nextButton.hidden = currentStep === steps.length - 1;
+    }
+
+    if (submitButton) {
+      submitButton.hidden = currentStep !== steps.length - 1;
+    }
+
+    if (currentStep === steps.length - 1) {
+      refreshReview();
+    }
+  };
+
+  previousButton?.addEventListener("click", () => {
+    if (currentStep === 0) {
+      return;
+    }
+
+    currentStep -= 1;
+    renderStep();
+  });
+
+  nextButton?.addEventListener("click", () => {
+    if (!validateStep(steps[currentStep])) {
+      return;
+    }
+
+    if (currentStep < steps.length - 1) {
+      currentStep += 1;
+      renderStep();
+    }
+  });
+
+  form.addEventListener("input", refreshReview);
+  form.addEventListener("change", refreshReview);
+
+  form.addEventListener("submit", (event) => {
+    if (currentStep === steps.length - 1) {
+      refreshReview();
+      return;
+    }
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    if (!validateStep(steps[currentStep])) {
+      return;
+    }
+
+    currentStep += 1;
+    renderStep();
+  });
+
+  renderStep();
 }
 
 function slugify(value) {

@@ -3,748 +3,147 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta
-      name="description"
-      content="Register for clinical trials with the Africa Renal Research Network (ARRI)."
-    >
+    <meta name="description" content="Register for clinical trials with the Africa Renal Research Network (ARRI).">
     <title>Clinical Trial Registration | ARRI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"
-      rel="stylesheet"
-    >
-    <style>
-      :root {
-        --page-bg: #f6f1eb;
-        --surface: #fffdf9;
-        --surface-muted: #fbf5ee;
-        --ink: #5d2a05;
-        --ink-soft: #8d6a4a;
-        --hero: #6a340c;
-        --hero-deep: #592804;
-        --accent: #9f4f0b;
-        --accent-deep: #874208;
-        --gold: #f0c04f;
-        --gold-deep: #d6a93f;
-        --line: rgba(93, 42, 5, 0.1);
-        --shadow: 0 22px 50px rgba(86, 41, 11, 0.12);
-        --shadow-soft: 0 10px 24px rgba(86, 41, 11, 0.08);
-        --radius-lg: 30px;
-        --radius-md: 22px;
-        --radius-sm: 18px;
-        --page-gutter: clamp(1rem, 4vw, 3.75rem);
-        --transition: 220ms ease;
-      }
-
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: "Manrope", sans-serif;
-        color: var(--ink);
-        background:
-          radial-gradient(circle at top center, rgba(240, 192, 79, 0.14), transparent 24%),
-          linear-gradient(180deg, #faf7f2 0%, var(--page-bg) 100%);
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      img {
-        display: block;
-        max-width: 100%;
-      }
-
-      .container {
-        width: 100%;
-        margin: 0;
-      }
-
-      .site-header {
-        padding: 0;
-        background: rgba(255, 253, 249, 0.98);
-        border-bottom: 1px solid rgba(93, 42, 5, 0.08);
-        box-shadow: 0 8px 18px rgba(86, 41, 11, 0.06);
-      }
-
-      .nav-shell {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        width: 100%;
-        padding: 1rem var(--page-gutter);
-        background: transparent;
-      }
-
-      .brand {
-        display: flex;
-        align-items: baseline;
-        gap: 0.35rem;
-        white-space: nowrap;
-      }
-
-      .brand__mark {
-        font-family: "Fraunces", serif;
-        font-size: 1.55rem;
-        font-weight: 700;
-        letter-spacing: -0.03em;
-        color: var(--accent);
-      }
-
-      .brand__copy {
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: rgba(93, 42, 5, 0.54);
-      }
-
-      .desktop-nav {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .desktop-nav a {
-        padding: 0.6rem 0.8rem;
-        border-radius: 999px;
-        font-size: 0.84rem;
-        font-weight: 700;
-        color: rgba(93, 42, 5, 0.72);
-        transition: background var(--transition), color var(--transition);
-      }
-
-      .desktop-nav a:hover,
-      .desktop-nav a:focus-visible,
-      .desktop-nav a.is-active {
-        background: rgba(159, 79, 11, 0.1);
-        color: var(--accent);
-      }
-
-      .nav-cta,
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.55rem;
-        border: 0;
-        border-radius: 999px;
-        font-weight: 800;
-        transition:
-          transform var(--transition),
-          box-shadow var(--transition),
-          background var(--transition),
-          color var(--transition);
-      }
-
-      .nav-cta:hover,
-      .nav-cta:focus-visible,
-      .button:hover,
-      .button:focus-visible {
-        transform: translateY(-2px);
-      }
-
-      .nav-cta {
-        padding: 0.82rem 1.12rem;
-        background: linear-gradient(135deg, var(--accent), var(--accent-deep));
-        color: #fff8f0;
-        font-size: 0.84rem;
-        box-shadow: 0 12px 24px rgba(159, 79, 11, 0.18);
-      }
-
-      main {
-        padding: 0 0 2rem;
-      }
-
-      .hero-shell {
-        overflow: hidden;
-        border-radius: 0;
-      }
-
-      .hero-panel {
-        padding: clamp(3.8rem, 8vw, 5.5rem) 1.5rem clamp(3rem, 6vw, 4.2rem);
-        text-align: center;
-        color: #fff8ef;
-        background:
-          radial-gradient(circle at top center, rgba(255, 255, 255, 0.08), transparent 24%),
-          linear-gradient(180deg, var(--hero) 0%, var(--hero-deep) 100%);
-      }
-
-      .hero-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        padding: 0.42rem 0.82rem;
-        border-radius: 999px;
-        background: rgba(240, 192, 79, 0.16);
-        border: 1px solid rgba(240, 192, 79, 0.22);
-        color: #f6ca62;
-        font-size: 0.68rem;
-        font-weight: 800;
-      }
-
-      .hero-pill::before {
-        content: "";
-        width: 0.45rem;
-        height: 0.45rem;
-        border-radius: 999px;
-        background: var(--gold);
-      }
-
-      .hero-title {
-        margin: 1.25rem 0 0;
-        font-family: "Fraunces", serif;
-        font-size: clamp(2.5rem, 5.5vw, 4.2rem);
-        line-height: 0.96;
-        letter-spacing: -0.05em;
-      }
-
-      .hero-title .highlight {
-        color: var(--gold);
-      }
-
-      .hero-copy {
-        width: min(100%, 36rem);
-        margin: 1rem auto 0;
-        color: rgba(255, 248, 239, 0.78);
-        font-size: 0.92rem;
-        line-height: 1.7;
-      }
-
-      .hero-actions {
-        display: flex;
-        justify-content: center;
-        gap: 0.85rem;
-        margin-top: 1.5rem;
-        flex-wrap: wrap;
-      }
-
-      .button {
-        padding: 0.9rem 1.3rem;
-        font-size: 0.74rem;
-      }
-
-      .button--gold {
-        background: linear-gradient(135deg, #f3c652, #d7aa41);
-        color: #5b2b08;
-        box-shadow: 0 18px 32px rgba(214, 169, 63, 0.24);
-      }
-
-      .button--ghost {
-        background: rgba(255, 255, 255, 0.08);
-        color: #fff8ef;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      }
-
-      .stats-strip {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 0;
-        background: linear-gradient(180deg, #a6510d 0%, #95490c 100%);
-      }
-
-      .stat {
-        padding: 1rem 1.1rem;
-        text-align: center;
-        border-right: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .stat:last-child {
-        border-right: 0;
-      }
-
-      .stat strong {
-        display: block;
-        font-family: "Fraunces", serif;
-        font-size: 1.45rem;
-        line-height: 1;
-        color: var(--gold);
-      }
-
-      .stat span {
-        display: block;
-        margin-top: 0.35rem;
-        font-size: 0.68rem;
-        font-weight: 700;
-        color: rgba(255, 248, 239, 0.74);
-      }
-
-      .section {
-        padding: clamp(3.2rem, 6vw, 4.8rem) 0;
-      }
-
-      .network-section {
-        background: #f8f3ec;
-      }
-
-      .network-section .container,
-      .site-footer .container {
-        padding-inline: var(--page-gutter);
-      }
-
-      .section-header {
-        text-align: center;
-      }
-
-      .section-title {
-        margin: 0;
-        font-family: "Fraunces", serif;
-        font-size: clamp(2rem, 4vw, 2.6rem);
-        line-height: 0.98;
-        letter-spacing: -0.04em;
-      }
-
-      .section-copy {
-        width: min(100%, 34rem);
-        margin: 0.9rem auto 0;
-        color: var(--ink-soft);
-        font-size: 0.9rem;
-      }
-
-      .section-divider {
-        width: 4.5rem;
-        height: 3px;
-        margin: 1rem auto 0;
-        border-radius: 999px;
-        background: linear-gradient(90deg, rgba(159, 79, 11, 0.1), var(--gold), rgba(159, 79, 11, 0.1));
-      }
-
-      .network-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 1.2rem;
-        margin-top: 2.3rem;
-      }
-
-      .network-card {
-        padding: 1.35rem 1.2rem 1.25rem;
-        border-radius: 0;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        box-shadow: var(--shadow-soft);
-        transition: transform var(--transition), box-shadow var(--transition);
-      }
-
-      .network-card:hover,
-      .network-card:focus-within {
-        transform: translateY(-5px);
-        box-shadow: 0 18px 36px rgba(86, 41, 11, 0.12);
-      }
-
-      .card-icon {
-        display: inline-grid;
-        place-items: center;
-        width: 2.2rem;
-        height: 2.2rem;
-        border-radius: 999px;
-        background: rgba(159, 79, 11, 0.08);
-        color: var(--accent);
-      }
-
-      .card-icon svg {
-        width: 1rem;
-        height: 1rem;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-
-      .card-title {
-        margin: 0.9rem 0 0;
-        font-family: "Fraunces", serif;
-        font-size: 1.08rem;
-        line-height: 1.05;
-      }
-
-      .card-copy {
-        margin: 0.6rem 0 0;
-        color: var(--ink-soft);
-        font-size: 0.8rem;
-        line-height: 1.65;
-      }
-
-      .cta-section {
-        padding: 0;
-      }
-
-      .cta-panel {
-        padding: clamp(3.2rem, 5vw, 4.2rem) 1.5rem;
-        text-align: center;
-        color: #fff7ec;
-        background: linear-gradient(180deg, #a24f0d 0%, #95480b 100%);
-      }
-
-      .cta-icon {
-        display: inline-grid;
-        place-items: center;
-        width: 2.8rem;
-        height: 2.8rem;
-        border-radius: 999px;
-        margin-bottom: 1rem;
-        color: var(--gold);
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      .cta-icon svg {
-        width: 1.2rem;
-        height: 1.2rem;
-        stroke: currentColor;
-        fill: none;
-        stroke-width: 1.8;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-      }
-
-      .cta-panel p {
-        width: min(100%, 37rem);
-        margin: 1rem auto 0;
-        color: rgba(255, 247, 236, 0.8);
-        font-size: 0.9rem;
-        line-height: 1.7;
-      }
-
-      .cta-panel .button {
-        margin-top: 1.4rem;
-      }
-
-      .site-footer {
-        background: linear-gradient(180deg, #5d2a05 0%, #4a1f03 100%);
-        color: #fff7ec;
-      }
-
-      .footer-shell {
-        padding: 2.4rem 0 1.2rem;
-      }
-
-      .footer-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr));
-        gap: 2rem;
-      }
-
-      .footer-title {
-        margin: 0 0 0.75rem;
-        font-family: "Fraunces", serif;
-        font-size: 1.15rem;
-        color: var(--gold);
-      }
-
-      .footer-brand {
-        font-family: "Fraunces", serif;
-        font-size: 1.45rem;
-        margin: 0 0 0.7rem;
-      }
-
-      .footer-copy,
-      .footer-links a,
-      .footer-contact a,
-      .footer-contact p {
-        margin: 0;
-        color: rgba(255, 247, 236, 0.7);
-        font-size: 0.92rem;
-        line-height: 1.8;
-      }
-
-      .footer-links,
-      .footer-contact {
-        display: grid;
-        gap: 0.35rem;
-      }
-
-      .footer-links a:hover,
-      .footer-links a:focus-visible,
-      .footer-contact a:hover,
-      .footer-contact a:focus-visible {
-        color: var(--gold);
-      }
-
-      .footer-bottom {
-        margin-top: 1.7rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        text-align: center;
-      }
-
-      .footer-bottom p {
-        margin: 0;
-        color: rgba(255, 247, 236, 0.52);
-        font-size: 0.82rem;
-      }
-
-      @media (max-width: 980px) {
-        .nav-shell,
-        .footer-grid {
-          flex-direction: column;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .brand,
-        .desktop-nav,
-        .nav-cta {
-          justify-content: center;
-        }
-
-        .stats-strip,
-        .network-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .footer-brand-column {
-          grid-column: 1 / -1;
-        }
-      }
-
-      @media (max-width: 720px) {
-        .site-header {
-          padding-top: 0;
-        }
-
-        .nav-shell {
-          padding: 1rem;
-        }
-
-        .desktop-nav {
-          gap: 0.45rem;
-        }
-
-        .desktop-nav a {
-          font-size: 0.86rem;
-        }
-
-        .hero-panel {
-          padding-top: 3rem;
-          padding-bottom: 2.5rem;
-        }
-
-        .hero-actions {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .hero-actions .button {
-          width: min(100%, 220px);
-        }
-
-        .stats-strip,
-        .network-grid,
-        .footer-grid {
-          grid-template-columns: minmax(0, 1fr);
-        }
-
-        .stat {
-          border-right: 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .stat:last-child {
-          border-bottom: 0;
-        }
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
   </head>
-  <body>
-    <header class="site-header">
-      <div class="container">
-        <div class="nav-shell">
-          <a class="brand" href="index.html" aria-label="ARRI home">
-            <span class="brand__mark">ARRI</span>
-            <span class="brand__copy">Africa Renal Research Network</span>
-          </a>
-          <nav class="desktop-nav" aria-label="Main">
-            <a class="is-active" href="index.html">Home</a>
-            <a href="mission-and-vision.html">About Us</a>
-            <a href="sponsors.html">Sponsors</a>
-            <a href="studies.html">Studies</a>
-            <a href="our-team.html">Our Team</a>
-            <a href="contactus.html">Contact</a>
-          </nav>
-          <a class="nav-cta" href="registration.html">Register for Clinical Trial</a>
-        </div>
-      </div>
-    </header>
-
+  <body data-page="home">
+    <div data-site-header></div>
     <main>
-      <section class="hero-shell">
+      <section class="section">
         <div class="container">
-          <div class="hero-panel">
-            <span class="hero-pill">Register for Clinical Trial</span>
-            <h1 class="hero-title">We are <span class="highlight">ARRI.</span></h1>
-            <p class="hero-copy">
-              The Africa Renal Research Network (ARRI) bridges the gap between global pharmaceutical innovation and African clinical expertise, providing a unified, high-integrity platform for renal research.
-            </p>
-            <div class="hero-actions">
-              <a class="button button--gold" href="registration.html">Get Started</a>
-              <a class="button button--ghost" href="mission-and-vision.html">Learn More</a>
+          <div class="page-copy page-copy--intro surface surface--strong center" data-reveal>
+            <p class="pill sponsor-pill">Register for Clinical Trial</p>
+            <div class="page-header center">
+              <h1 class="title-lg">We are ARRI.</h1>
+              <p>The Africa Renal Research Network (ARRI) bridges the gap between global pharmaceutical innovation and African clinical expertise, providing a unified, high-integrity platform for renal research.</p>
+            </div>
+            <div class="hero-actions hero-actions--center">
+              <a class="button" href="registration.html">Get Started</a>
+              <a class="button button--secondary" href="mission-and-vision.html">Learn More</a>
             </div>
           </div>
-          <div class="stats-strip">
-            <div class="stat">
+
+          <div class="metrics-strip metrics-strip--four" data-reveal style="--delay: 80ms;">
+            <article class="metric">
               <strong>10+</strong>
               <span>Research Sites</span>
-            </div>
-            <div class="stat">
+            </article>
+            <article class="metric">
               <strong>50+</strong>
               <span>Investigators</span>
-            </div>
-            <div class="stat">
+            </article>
+            <article class="metric">
               <strong>6</strong>
               <span>African Countries</span>
-            </div>
-            <div class="stat">
+            </article>
+            <article class="metric">
               <strong>100%</strong>
               <span>GCP Certified</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container spaced">
+          <div class="page-header center" data-reveal>
+            <h2 class="title-md">Our Network</h2>
+            <p class="text-muted">A unified platform connecting patients, sponsors, and investigators across Africa.</p>
+          </div>
+
+          <div class="card-grid card-grid--four">
+            <article class="sponsor-capability-card surface" data-reveal>
+              <div class="sponsor-capability-card__header">
+                <span class="research-focus-card__icon sponsor-capability-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
+                    <path d="M5 20a7 7 0 0 1 14 0"></path>
+                  </svg>
+                </span>
+                <div class="sponsor-capability-card__title-wrap">
+                  <p class="sponsor-capability-card__label">Patients</p>
+                  <h3 class="card-title">Patients</h3>
+                </div>
+              </div>
+              <p>Streamlined pre-screening and enrollment for renal clinical trials across Africa.</p>
+            </article>
+
+            <article class="sponsor-capability-card surface" data-reveal style="--delay: 70ms;">
+              <div class="sponsor-capability-card__header">
+                <span class="research-focus-card__icon sponsor-capability-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M5 7.5h14"></path>
+                    <path d="M7 4.5h10a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2Z"></path>
+                    <path d="M8.5 11h7"></path>
+                    <path d="M8.5 14.5h4.5"></path>
+                  </svg>
+                </span>
+                <div class="sponsor-capability-card__title-wrap">
+                  <p class="sponsor-capability-card__label">Sponsors</p>
+                  <h3 class="card-title">Sponsors</h3>
+                </div>
+              </div>
+              <p>GCP-certified teams, robust recruitment, and high-integrity data across multiple sites.</p>
+            </article>
+
+            <article class="sponsor-capability-card surface" data-reveal style="--delay: 140ms;">
+              <div class="sponsor-capability-card__header">
+                <span class="research-focus-card__icon sponsor-capability-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
+                    <path d="M16.5 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"></path>
+                    <path d="M3.5 20a5 5 0 0 1 9 0"></path>
+                    <path d="M13 20a4.5 4.5 0 0 1 7 0"></path>
+                  </svg>
+                </span>
+                <div class="sponsor-capability-card__title-wrap">
+                  <p class="sponsor-capability-card__label">Investigators</p>
+                  <h3 class="card-title">Investigators</h3>
+                </div>
+              </div>
+              <p>A pan-African network of experienced nephrologists and research coordinators.</p>
+            </article>
+
+            <article class="sponsor-capability-card surface" data-reveal style="--delay: 210ms;">
+              <div class="sponsor-capability-card__header">
+                <span class="research-focus-card__icon sponsor-capability-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M9 4h6"></path>
+                    <path d="M10 4v4l-4.5 7.5A3 3 0 0 0 8 20h8a3 3 0 0 0 2.5-4.5L14 8V4"></path>
+                    <path d="M9 14h6"></path>
+                  </svg>
+                </span>
+                <div class="sponsor-capability-card__title-wrap">
+                  <p class="sponsor-capability-card__label">Research</p>
+                  <h3 class="card-title">Research</h3>
+                </div>
+              </div>
+              <p>Understanding the pathogenesis and treatment of kidney disease in African populations.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="cta-band sponsor-cta-band" data-reveal>
+            <div class="cta-band__inner">
+              <div class="spaced">
+                <p class="cta-band__eyebrow">Pan-African Research Excellence</p>
+                <h2 class="title-md">From Nairobi to Lagos, Cape Town to Accra</h2>
+                <p>ARRI provides pharmaceutical sponsors with access to diverse patient populations and world-class clinical infrastructure.</p>
+              </div>
+              <a class="button button--light" href="registration.html">Register for Clinical Trial</a>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section network-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Our Network</h2>
-            <p class="section-copy">
-              A unified platform connecting patients, sponsors, and investigators across Africa.
-            </p>
-            <div class="section-divider" aria-hidden="true"></div>
-          </div>
-
-          <div class="network-grid">
-            <article class="network-card">
-              <span class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
-                  <path d="M5 20a7 7 0 0 1 14 0"></path>
-                </svg>
-              </span>
-              <h3 class="card-title">Patients</h3>
-              <p class="card-copy">
-                Streamlined pre-screening and enrollment for renal clinical trials across Africa.
-              </p>
-            </article>
-
-            <article class="network-card">
-              <span class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 7.5h14"></path>
-                  <path d="M7 4.5h10a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2Z"></path>
-                  <path d="M8.5 11h7"></path>
-                  <path d="M8.5 14.5h4.5"></path>
-                </svg>
-              </span>
-              <h3 class="card-title">Sponsors</h3>
-              <p class="card-copy">
-                GCP-certified teams, robust recruitment, and high-integrity data across multiple sites.
-              </p>
-            </article>
-
-            <article class="network-card">
-              <span class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
-                  <path d="M16.5 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"></path>
-                  <path d="M3.5 20a5 5 0 0 1 9 0"></path>
-                  <path d="M13 20a4.5 4.5 0 0 1 7 0"></path>
-                </svg>
-              </span>
-              <h3 class="card-title">Investigators</h3>
-              <p class="card-copy">
-                A pan-African network of experienced nephrologists and research coordinators.
-              </p>
-            </article>
-
-            <article class="network-card">
-              <span class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M9 4h6"></path>
-                  <path d="M10 4v4l-4.5 7.5A3 3 0 0 0 8 20h8a3 3 0 0 0 2.5-4.5L14 8V4"></path>
-                  <path d="M9 14h6"></path>
-                </svg>
-              </span>
-              <h3 class="card-title">Research</h3>
-              <p class="card-copy">
-                Understanding the pathogenesis and treatment of kidney disease in African populations.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="cta-section">
-        <div class="container">
-          <div class="cta-panel">
-            <span class="cta-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 3v18"></path>
-                <path d="M3 12h18"></path>
-                <path d="M5.5 6.5a15 15 0 0 0 13 0"></path>
-                <path d="M5.5 17.5a15 15 0 0 1 13 0"></path>
-              </svg>
-            </span>
-            <h2 class="section-title">Pan-African Research Excellence</h2>
-            <p>
-              From Nairobi to Lagos, Cape Town to Accra — ARRI provides pharmaceutical sponsors with access to diverse patient populations and world-class clinical infrastructure.
-            </p>
-            <a class="button button--gold" href="registration.html">Register for Clinical Trial</a>
           </div>
         </div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <div class="container footer-shell">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <p class="footer-brand__name">ARRI</p>
-            <p class="footer-copy">
-              Africa Renal Research Network — bridging global pharmaceutical innovation and African clinical expertise.
-            </p>
-            <p class="footer-copy">
-              Suite 4.3, 4th floor • Anderson Building, Nairobi Hospital • Kenya
-            </p>
-          </div>
-
-          <div>
-            <h2 class="footer-title">Quick Links</h2>
-            <nav class="footer-links" aria-label="Quick Links">
-              <a href="mission-and-vision.html">About Us</a>
-              <a href="studies.html">Studies</a>
-              <a href="sponsors.html">Sponsors</a>
-              <a href="our-team.html">Our Team</a>
-              <a href="contactus.html">Contact</a>
-            </nav>
-          </div>
-
-          <div>
-            <h2 class="footer-title">Contact</h2>
-            <div class="footer-contact">
-              <a href="tel:+254718930065">+254 718 930 065</a>
-              <a href="mailto:info@arri.ke">info@arri.ke</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>© 2026 Africa Renal Research Network. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+    <div data-site-footer></div>
   </body>
 </html>
