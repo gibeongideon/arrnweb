@@ -1504,6 +1504,44 @@ main {
   aspect-ratio: 16 / 10;
 }
 
+.research-focus-card {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 0.9rem;
+  padding: 1.6rem 1.35rem;
+}
+
+.research-focus-card__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 999px;
+  background: rgba(159, 79, 11, 0.1);
+  color: var(--teal);
+}
+
+.research-focus-card__icon svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.research-focus-card .card-title {
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  line-height: 1.02;
+}
+
+.research-focus-card p:last-child {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
 .contact-grid {
   align-items: start;
 }

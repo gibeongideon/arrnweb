@@ -2,7 +2,7 @@ const NAV_ITEMS = [
   { label: "Home", href: "index.html", pages: ["home"] },
   { label: "About Us", href: "mission-and-vision.html", pages: ["mission-and-vision"] },
   { label: "Sponsors", href: "sponsors.html", pages: ["sponsors"] },
-  { label: "Studies", href: "patients.html", pages: ["patients", "nephrology", "autoimmune", "cardiology"] },
+  { label: "Studies", href: "studies.html", pages: ["studies", "nephrology", "autoimmune", "cardiology"] },
   { label: "Our Team", href: "our-team.html", pages: ["our-team"] },
   { label: "Contact", href: "contactus.html", pages: ["contactus"] },
 ];
@@ -45,7 +45,7 @@ function renderChrome() {
     headerMount.innerHTML = createHeader(page);
   }
 
-  if (main && page !== "registration" && page !== "sponsors") {
+  if (main && page !== "registration" && page !== "sponsors" && page !== "studies") {
     main.insertAdjacentHTML("beforeend", createRegistrationBand());
   }
 
@@ -108,7 +108,7 @@ function createFooter() {
               <h2 class="footer-title">Quick Links</h2>
               <nav class="footer-links" aria-label="Quick Links">
                 <a href="mission-and-vision.html">About Us</a>
-                <a href="patients.html">Studies</a>
+                <a href="studies.html">Studies</a>
                 <a href="sponsors.html">Sponsors</a>
                 <a href="our-team.html">Our Team</a>
                 <a href="contactus.html">Contact</a>
