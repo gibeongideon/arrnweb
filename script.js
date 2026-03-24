@@ -9,7 +9,16 @@ const NAV_ITEMS = [
     children: [{ label: "Our Team", href: "our-team.html", pages: ["our-team"] }],
   },
   { label: "Patients", href: "patients.html", pages: ["patients"] },
-  { label: "Sponsors", href: "sponsors.html", pages: SPONSOR_PAGES },
+  {
+    label: "Sponsors",
+    href: "sponsors.html",
+    pages: SPONSOR_PAGES,
+    children: [
+      { label: "Services", href: "sponsor-services.html", pages: ["sponsor-services"] },
+      { label: "Resources", href: "sponsor-resources.html", pages: ["sponsor-resources"] },
+      { label: "Clinical Activation", href: "sponsor-clinical-activation.html", pages: ["sponsor-clinical-activation"] },
+    ],
+  },
   { label: "Studies", href: "studies.html", pages: ["studies", "nephrology", "autoimmune", "cardiology"] },
   { label: "Contact", href: "contactus.html", pages: ["contactus"] },
 ];
@@ -231,11 +240,12 @@ function renderDesktopNavItem(item, page) {
   const active = item.pages.includes(page);
 
   if (item.children?.length) {
+    const parentActive = page === item.pages[0];
     return `
       <details class="nav-group ${active ? "is-active" : ""}" ${active ? "open" : ""}>
         <summary>${item.label}</summary>
         <div class="dropdown-menu">
-          <a class="dropdown-link ${page === "mission-and-vision" ? "is-active" : ""}" href="${item.href}" ${page === "mission-and-vision" ? 'aria-current="page"' : ""}>${item.label}</a>
+          <a class="dropdown-link ${parentActive ? "is-active" : ""}" href="${item.href}" ${parentActive ? 'aria-current="page"' : ""}>${item.label}</a>
           ${item.children
             .map((child) => {
               const childActive = child.pages.includes(page);
@@ -254,9 +264,10 @@ function renderMobileNavItem(item, page) {
   const active = item.pages.includes(page);
 
   if (item.children?.length) {
+    const parentActive = page === item.pages[0];
     return `
       <div class="mobile-group ${active ? "is-active" : ""}">
-        <a class="mobile-link ${page === "mission-and-vision" ? "is-active" : ""}" href="${item.href}" ${page === "mission-and-vision" ? 'aria-current="page"' : ""}>${item.label}</a>
+        <a class="mobile-link ${parentActive ? "is-active" : ""}" href="${item.href}" ${parentActive ? 'aria-current="page"' : ""}>${item.label}</a>
         <div class="mobile-group__items">
           ${item.children
             .map((child) => {
