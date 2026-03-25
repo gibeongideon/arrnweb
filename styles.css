@@ -2467,6 +2467,7 @@ main {
   width: auto;
   height: 3.35rem;
   object-fit: contain;
+  border-radius: 18px;
 }
 
 .footer-title {
