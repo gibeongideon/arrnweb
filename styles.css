@@ -343,6 +343,15 @@ main {
   justify-content: center;
 }
 
+.hero-actions--compact {
+  gap: 0.6rem;
+}
+
+.hero-actions--compact .button {
+  padding: 0.78rem 1rem;
+  font-size: 0.92rem;
+}
+
 .hero-media {
   position: relative;
   min-height: 100%;
@@ -733,6 +742,18 @@ main {
   display: grid;
   justify-items: center;
   text-align: center;
+  width: 100%;
+}
+
+.cta-band__inner--center .spaced {
+  display: grid;
+  justify-items: center;
+  width: min(100%, 42rem);
+  margin-inline: auto;
+}
+
+.cta-band__inner--center p {
+  margin-inline: auto;
 }
 
 .page-header {
@@ -1677,12 +1698,38 @@ main {
 
 .team-card {
   grid-template-rows: auto 1fr;
+  justify-items: center;
+  text-align: center;
 }
 
 .team-card .card-media {
-  aspect-ratio: 4 / 5;
-  min-height: 300px;
-  background: rgba(175, 122, 66, 0.08);
+  aspect-ratio: 1 / 1;
+  width: min(168px, 100%);
+  min-height: 0;
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.34), transparent 34%),
+    linear-gradient(180deg, rgba(214, 170, 116, 0.2), rgba(120, 67, 25, 0.1));
+  border-radius: 999px;
+  overflow: hidden;
+  border: 6px solid rgba(255, 253, 249, 0.98);
+  box-shadow:
+    0 18px 34px rgba(86, 41, 11, 0.14),
+    0 0 0 1px rgba(175, 122, 66, 0.1);
+}
+
+.team-card__photo {
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.32), transparent 40%),
+    linear-gradient(180deg, rgba(175, 122, 66, 0.16), rgba(23, 33, 30, 0.08));
+}
+
+.team-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 16%;
+  transform: scale(1.04);
 }
 
 .team-card__placeholder {
@@ -1737,6 +1784,9 @@ main {
 
 .team-card .card-body {
   align-content: start;
+  justify-items: center;
+  text-align: center;
+  padding-top: 1rem;
 }
 
 .social-tag {
